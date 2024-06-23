@@ -7,11 +7,11 @@ const Message = ({ message }) => {
   const selectedConversation = useSelector(
     (store) => store.conversation.selectedConversation
   );
-  const fromMe = message.senderId === authUser.user._id;
+  const fromMe = message.senderId === authUser._id;
 
   const chatClassName = fromMe ? "chat-end" : "chat-start";
   const profilePic = fromMe
-    ? authUser.user.profilePic
+    ? authUser.profilePic
     : selectedConversation?.profilePic;
   const bubbleBgColor = fromMe ? "bg-blue-500" : "";
   const formattedTime = extractTime(message.createdAt);
