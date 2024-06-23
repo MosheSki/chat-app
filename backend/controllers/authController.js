@@ -59,7 +59,7 @@ export const login = async (req, res) => {
 
     generateTokenAndSetCookie(user._id, res);
 
-    res.status(200).json({ user });
+    res.status(200).json({ user }); //change this to an object (-password)
   } catch (error) {
     console.log("Error in login controller", error.message);
     res.status(500).json({ error: "Internal Server Error" });
