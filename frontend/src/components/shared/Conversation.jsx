@@ -6,7 +6,7 @@ const Conversation = ({ conversation }) => {
     (store) => store.conversation.selectedConversation
   );
   const dispatch = useDispatch();
-  const isSelected = selectedConversation === conversation;
+  const isSelected = selectedConversation?._id === conversation._id;
 
   return (
     <>
