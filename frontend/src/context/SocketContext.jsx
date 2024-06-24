@@ -16,9 +16,14 @@ export const SocketContextProvider = ({ children }) => {
   const [onlineUsers, setOnlineUsers] = useState([]);
   const { authUser } = useAuthContext();
 
+  const socketUrl =
+    import.meta.env.MODE === "development"
+      ? "http://localhost:5000"
+      : "https://chat-app-tnjh.onrender.com";
+
   useEffect(() => {
     if (authUser) {
-      const socket = io("https://chat-app-tnjh.onrender.com", {
+      const socket = io(socketUrl, {
         query: {
           userId: authUser._id,
         },
