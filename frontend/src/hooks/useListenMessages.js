@@ -15,11 +15,8 @@ const useListenMessages = () => {
     socket?.on("newMessage", (newMessage) => {
       console.log("Received newMessage:", newMessage);
       console.log("Selected conversation ID:", selectedConversation._id);
-      console.log("New message conversation ID:", newMessage.conversationId);
-      if (
-        selectedConversation._id.toString() ===
-        newMessage.conversationId.toString()
-      ) {
+      console.log("New message conversation ID:", newMessage.senderId);
+      if (selectedConversation._id === newMessage.senderId) {
         console.log("Message matches selected conversation:", newMessage);
         newMessage.shouldShake = true;
         const sound = new Audio(notificationSound);
