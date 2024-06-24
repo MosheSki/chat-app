@@ -41,6 +41,12 @@ export const sendMessage = async (req, res) => {
         ...newMessage._doc,
         conversationId: conversation._id,
       };
+      console.log(
+        "Emitting newMessage to:",
+        receiverSocketId,
+        messageWithConversationId
+      ); // Debug log
+
       io.to(receiverSocketId).emit("newMessage", messageWithConversationId);
       // io.to(receiverSocketId).emit("newMessage", newMessage);
     }
