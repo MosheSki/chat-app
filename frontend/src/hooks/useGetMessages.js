@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { setMessages } from "../redux/conversationReducer";
-import useListenMessages from "./useListenMessages";
+// import useListenMessages from "./useListenMessages";
 
 const useGetMessages = () => {
   const [loading, setLoading] = useState(false);
-  useListenMessages();
+  // useListenMessages();
   const { messages, selectedConversation } = useSelector(
     (store) => store.conversation
   );
