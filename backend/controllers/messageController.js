@@ -9,7 +9,7 @@ dotenv.config(); // Load environment variables from .env file
 
 // Configure Nodemailer transporter
 const transporter = nodemailer.createTransport({
-  service: "Hotmail", // Specify your email service provider
+  service: "Outlook", // Specify your email service provider
   auth: {
     user: process.env.EMAIL_USER, // Use environment variables for sensitive data
     pass: process.env.EMAIL_PASSWORD,
