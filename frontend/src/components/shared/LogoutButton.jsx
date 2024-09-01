@@ -17,7 +17,7 @@ const LogoutButton = () => {
         <span className="loading loading-spinner"></span>
       )}
       <div className="sm:text-lg md:text-xl text-gray-200 font-semibold">
-        logged in: {authUser.fullName}
+        🟢 {authUser.fullName}
       </div>
     </div>
   );

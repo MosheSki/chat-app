@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import MessageInput from "./MessageInput";
 import Messages from "./Messages";
 import { TiMessages } from "react-icons/ti";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { setSelectedConversation } from "../../redux/conversationReducer";
 import { useAuthContext } from "../../context/AuthContext";
 
@@ -12,10 +12,15 @@ const MessagesContainer = () => {
   );
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    //cleanup function (unmounts)
-    return () => dispatch(setSelectedConversation(null));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   //cleanup function (unmounts)
+  //   return () => dispatch(setSelectedConversation(null));
+  // }, [dispatch]);
+
+  const handleClose = () => {
+    // Remove selectedConversation from Redux store
+    dispatch(setSelectedConversation(null));
+  };
 
   return (
     <div className="md:min-w-[450px] flex flex-col">
@@ -23,11 +28,14 @@ const MessagesContainer = () => {
         <NoChatSelected />
       ) : (
         <>
-          <div className="bg-slate-500 px-4 py-2 mb-2">
+          <div className="bg-slate-500 px-4 py-2 mb-2 flex items-center justify-between">
             <span className="label-text">To:</span>{" "}
             <span className="text-gray-900 font-bold">
               {selectedConversation.fullName}
             </span>
+            <div className="cursor-pointer ml-auto" onClick={handleClose}>
+              ❌
+            </div>
           </div>
 
           <Messages />

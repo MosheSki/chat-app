@@ -1,6 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useAuthContext } from "../context/AuthContext";
+import validator from "validator";
 
 const useRegister = () => {
   const [loading, setLoading] = useState(false);
@@ -76,7 +77,10 @@ function handleInputErrors({
     return false;
   }
 
-  //add email validation here and in the backend
+  if (!validator.isEmail(email)) {
+    toast.error("Please enter a valid email address");
+    return false;
+  }
 
   return true;
 }
